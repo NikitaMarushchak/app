@@ -6,6 +6,7 @@ import {isTemplateElement} from "@babel/types";
 interface AppState { //создаем ТИП
     data1:any;
     filteredData:any[];
+
 }
 
 export default class App extends React.Component<any, AppState> { //создаем корневую компоненту
@@ -13,13 +14,18 @@ export default class App extends React.Component<any, AppState> { //создае
     //    console.log(value);
     // });
 
+
     constructor(props: any) { //функция которая делает что-то, создаем пустой state
         super(props);
         this.state = {
             data1: {data: {list:[]}},
             filteredData: []
         };
-        fetch("object.json").then((value: Response) => { //создаем запрос
+        // fetch("object.json").then((value: Response) => { //создаем запрос
+        const proxyurl = "https://cors-anywhere.herokuapp.com/";
+        const url = "https://xn--80az8a.xn--d1aqf.xn--p1ai/%D1%81%D0%B5%D1%80%D0%B2%D0%B8%D1%81%D1%8B/api/kn/object?offset=0&limit=100&sortField=devId.devShortCleanNm&sortType=asc";
+
+        fetch(proxyurl + url).then((value: Response) => { //создаем запрос
             value.json().then(data => {
                 this.setState({
                     data1: data,
