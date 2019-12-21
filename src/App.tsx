@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import '../node_modules/bulma/css/bulma.css';
+
 import {isTemplateElement} from "@babel/types";
 
 interface AppState { //создаем ТИП
@@ -53,9 +55,9 @@ export default class App extends React.Component<any, AppState> { //создае
     render(): React.ReactNode {
         return (
             <div>
-                <input onChange={event => this.onInputFilterChange(event.target.value)}/>
-                <div>{this.state.filteredData.map((item: any) => {
-                    return (<p>{item.objCommercNm}</p>)
+                <input className="input" onChange={event => this.onInputFilterChange(event.target.value)}/>
+                <div >{this.state.filteredData.map((item: any) => {
+                    return (<div className="box"><p>{item.objCommercNm}</p></div>)
                 })}</div>
             </div>
         );
